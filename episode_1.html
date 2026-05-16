@@ -48,6 +48,12 @@
             margin-bottom: 25px;
             line-height: 2;
         }
+
+        #status {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #555;
+        }
     </style>
 
 </head>
@@ -78,28 +84,29 @@
             🔙 بازگشت به ربات
         </button>
 
+        <div id="status"></div>
+
     </div>
 
     <script>
         const messageBox = document.getElementById("message");
+        const statusBox = document.getElementById("status");
         const visitKey = "episode1_visited";
 
         if (sessionStorage.getItem(visitKey)) {
             messageBox.innerHTML =
-                "✅ از اینکه این اپیزود را خواندید متشکریم.<br>می‌توانید دوباره وارد داستان شوید یا به ربات بازگردید.";
+                "✅ از اینکه این اپیزود را خواندید متشکریم.<br>" +
+                "📖 می‌توانید دوباره وارد صفحه خواندن اپیزود شوید.<br>" +
+                "💬 اکنون می‌توانید برگردید و در صورت تمایل با شخصیت‌های رمان گفتگو کنید.";
         } else {
             messageBox.innerHTML = "🌟 به اپیزود 1 خوش آمدید.";
             sessionStorage.setItem(visitKey, "true");
         }
 
         function goBackToBot() {
+            statusBox.innerHTML = "⏳ اکنون به ربات بازگردید و ادامه دهید.";
             // باز کردن ربات تلگرام
             window.location.href = "tg://resolve?domain=Majid_SDG_bot&start=menu";
-
-            // بعد از نیم ثانیه صفحه را جایگزین کنیم
-            setTimeout(function () {
-                window.location.href = "about:blank";
-            }, 500);
         }
     </script>
 
