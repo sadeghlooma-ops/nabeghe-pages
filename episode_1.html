@@ -48,68 +48,61 @@
             margin-bottom: 25px;
             line-height: 2;
         }
-
-        #status {
-            margin-top: 15px;
-            font-size: 18px;
-            color: #555;
-        }
     </style>
 
 </head>
 
 <body>
 
-    <div class="box">
+<div class="box">
 
-        <h1>اپیزود 1</h1>
+    <h1>اپیزود 1</h1>
 
-        <div id="message"></div>
+    <div id="message"></div>
 
-        <p>
-            برای ورود به داستان روی دکمه زیر بزنید.
-        </p>
+    <p>
+        برای ورود به داستان روی دکمه زیر بزنید.
+    </p>
 
-        <br>
+    <br>
 
-        <a href="https://telegra.ph/%D8%B1%D9%85%D8%A7%D9%86-%D9%86%D8%A7%D8%A8%D8%BA%D9%87---%D8%A7%D9%BE%DB%8C%D8%B2%D9%88%D8%AF-1-05-09" target="_blank">
-            <button class="read-btn">
-                📖 ورود به اپیزود
-            </button>
-        </a>
+    <a href="https://telegra.ph/%D8%B1%D9%85%D8%A7%D9%86-%D9%86%D8%A7%D8%A8%D8%BA%D9%87---%D8%A7%D9%BE%DB%8C%D8%B2%D9%88%D8%AF-1-05-09">
+        <button class="read-btn">
+            📖 ورود به اپیزود
+        </button>
+    </a>
 
-        <br>
+    <br>
 
-        <button class="back-btn" onclick="goBackToBot()">
+    <a href="tg://resolve?domain=Majid_SDG_bot&start=menu">
+        <button class="back-btn">
             🔙 بازگشت به ربات
         </button>
+    </a>
 
-        <div id="status"></div>
+</div>
 
-    </div>
+<script>
 
-    <script>
-        const messageBox = document.getElementById("message");
-        const statusBox = document.getElementById("status");
-        const visitKey = "episode1_visited";
+    const messageBox = document.getElementById("message");
+    const visitKey = "episode1_visited";
 
-        if (sessionStorage.getItem(visitKey)) {
-            messageBox.innerHTML =
-                "✅ از اینکه این اپیزود را خواندید متشکریم.<br>" +
-                "📖 می‌توانید دوباره وارد صفحه خواندن اپیزود شوید.<br>" +
-                "💬 اکنون می‌توانید برگردید و در صورت تمایل با شخصیت‌های رمان گفتگو کنید.";
-        } else {
-            messageBox.innerHTML = "🌟 به اپیزود 1 خوش آمدید.";
-            sessionStorage.setItem(visitKey, "true");
-        }
+    if(sessionStorage.getItem(visitKey)){
 
-        function goBackToBot() {
-            statusBox.innerHTML = "⏳ اکنون به ربات بازگردید و ادامه دهید.";
-            // باز کردن ربات تلگرام
-            window.location.href = "tg://resolve?domain=Majid_SDG_bot&start=menu";
-        }
-    </script>
+        messageBox.innerHTML =
+            "✅ از اینکه این اپیزود را خواندید متشکریم.<br>" +
+            "📖 می‌توانید دوباره وارد صفحه خواندن اپیزود شوید.<br>" +
+            "💬 اکنون می‌توانید برگردید و در صورت تمایل با شخصیت‌های رمان گفتگو کنید.";
+
+    } else {
+
+        messageBox.innerHTML =
+            "🌟 به اپیزود 1 خوش آمدید.";
+
+        sessionStorage.setItem(visitKey , "true");
+    }
+
+</script>
 
 </body>
-
 </html>
