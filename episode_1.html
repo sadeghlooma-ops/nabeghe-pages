@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>اپیزود اول</title>
+    <title>اپیزود 1</title>
 
     <style>
 
@@ -25,11 +25,29 @@
         }
 
         button{
-            font-size:22px;
-            padding:15px 30px;
+            font-size:20px;
+            padding:15px 25px;
             border:none;
             border-radius:10px;
             cursor:pointer;
+            margin:10px;
+        }
+
+        .read-btn{
+            background:#4CAF50;
+            color:white;
+        }
+
+        .back-btn{
+            background:#2196F3;
+            color:white;
+        }
+
+        #message{
+            font-size:20px;
+            color:#333;
+            margin-bottom:25px;
+            line-height:2;
         }
 
     </style>
@@ -40,7 +58,9 @@
 
 <div class="box">
 
-    <h1>اپیزود اول </h1>
+    <h1>اپیزود 1</h1>
+
+    <div id="message"></div>
 
     <p>
         برای ورود به داستان روی دکمه زیر بزنید.
@@ -49,12 +69,45 @@
     <br>
 
     <a href="https://telegra.ph/%D8%B1%D9%85%D8%A7%D9%86-%D9%86%D8%A7%D8%A8%D8%BA%D9%87---%D8%A7%D9%BE%DB%8C%D8%B2%D9%88%D8%AF-1-05-09">
-        <button>
+
+        <button class="read-btn">
             📖 ورود به اپیزود
         </button>
+
     </a>
 
+    <br>
+    <a href="tg://resolve?domain=Majid_SDG_bot&start=menu">
+
+        <button class="back-btn">
+            🔙 بازگشت به ربات
+        </button>
+
+    </a>
+
+
 </div>
+
+<script>
+
+    const messageBox = document.getElementById("message");
+
+    const visitKey = "episode1_visited";
+
+    if(sessionStorage.getItem(visitKey)){
+
+        messageBox.innerHTML =
+            "✅ از اینکه این اپیزود را خواندید متشکریم.<br>می‌توانید دوباره وارد داستان شوید یا به ربات بازگردید.";
+
+    }else{
+
+        messageBox.innerHTML =
+            "🌟 به اپیزود 1 خوش آمدید.";
+
+        sessionStorage.setItem(visitKey , "true");
+    }
+
+</script>
 
 </body>
 </html>
