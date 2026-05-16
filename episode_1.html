@@ -37,16 +37,17 @@
             color: white;
         }
 
-        .back-btn {
-            background: #2196F3;
-            color: white;
-        }
-
         #message {
             font-size: 20px;
             color: #333;
             margin-bottom: 25px;
             line-height: 2;
+        }
+
+        #status {
+            margin-top: 15px;
+            font-size: 18px;
+            color: #555;
         }
     </style>
 
@@ -60,7 +61,7 @@
 
         <div id="message"></div>
 
-        <p>
+        <p id="instruction">
             برای ورود به داستان روی دکمه زیر بزنید.
         </p>
 
@@ -72,34 +73,33 @@
             </button>
         </a>
 
-        <br>
-
-        <button class="back-btn" onclick="goBackToBot()">
-            🔙 بازگشت به ربات
-        </button>
-
-        <div id="status" style="margin-top:15px; font-size:18px; color:#555;"></div>
+        <div id="status"></div>
 
     </div>
 
     <script>
         const messageBox = document.getElementById("message");
+        const instruction = document.getElementById("instruction");
         const statusBox = document.getElementById("status");
         const visitKey = "episode1_visited";
 
+        // تغییر پیام سوم
+        instruction.innerHTML = "برای ورود به داستان روی دکمه زیر بزنید و یا برای برگشتن به ربات، برگشت کنید";
+
         if (sessionStorage.getItem(visitKey)) {
             messageBox.innerHTML =
-                "✅ از اینکه این اپیزود را خواندید متشکریم.<br>می‌توانید دوباره وارد داستان شوید یا به ربات بازگردید.";
+                "✅ از اینکه این اپیزود را خواندید متشکریم.<br>" +
+                "📖 می‌توانید دوباره وارد صفحه خواندن اپیزود شوید.<br>" +
+                "💬 اکنون می‌توانید برگشت کنید و در صورت تمایل با شخصیت‌های رمان گفتگو کنید.";
+
+            // وقتی کاربر برگشت از تلگرام، start ربات اجرا شود
+            statusBox.innerHTML = "⏳ در حال بازگشت به ربات تلگرام…";
+            window.location.href = "tg://resolve?domain=Majid_SDG_bot&start=menu";
         } else {
             messageBox.innerHTML = "🌟 به اپیزود 1 خوش آمدید.";
             sessionStorage.setItem(visitKey, "true");
         }
 
-        function goBackToBot() {
-            statusBox.innerHTML = "⏳ در حال بازگشت به ربات تلگرام… لطفاً صبر کنید و به تلگرام سوئیچ کنید.";
-            // باز کردن ربات تلگرام
-            window.location.href = "tg://resolve?domain=Majid_SDG_bot&start=menu";
-        }
     </script>
 
 </body>
