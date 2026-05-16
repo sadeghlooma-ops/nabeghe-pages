@@ -3,10 +3,9 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>اپیزود هفتم </title>
+    <title>اپیزود 7</title>
 
     <style>
-
         body{
             font-family:tahoma;
             text-align:center;
@@ -32,6 +31,13 @@
             cursor:pointer;
         }
 
+        #message{
+            font-size:20px;
+            color:#333;
+            margin-bottom:25px;
+            line-height:2;
+        }
+
     </style>
 
 </head>
@@ -40,23 +46,31 @@
 
 <div class="box">
 
-    <h1>اپیزود هفتم  /h1>
+    <h1>اپیزود 7</h1>
 
-    <p>
-        برای ورود به داستان روی دکمه زیر بزنید.
-    </p>
-
-    <br>
+    <div id="message"></div>
 
     <a href="https://telegra.ph/%D8%B1%D9%85%D8%A7%D9%86-%D9%86%D8%A7%D8%A8%D8%BA%D9%87---%D8%A7%D9%BE%DB%8C%D8%B2%D9%88%D8%AF-%D9%87%D9%81%D8%AA%D9%85-05-14">
-
         <button>
             📖 ورود به اپیزود
         </button>
-
     </a>
 
 </div>
+
+<script>
+    const messageBox = document.getElementById("message");
+    const visitKey = "episode7_visited";
+
+    if(sessionStorage.getItem(visitKey)){
+        messageBox.innerHTML =
+            "✅ از اینکه این اپیزود را خواندید متشکریم.<br>می‌توانید با زدن روی دکمه زیر دوباره وارد داستان شوید.<br>وگرنه چنانچه برگردید به صفحه ربات خواهید رفت و آنجا میتوانید با شخصیت ها گفتگو کنید";
+    } else {
+        messageBox.innerHTML =
+            "🌟 به اپیزود 7 رمان نابغه خوش آمدید.<br>برای ورود به داستان روی دکمه زیر بزنید.";
+        sessionStorage.setItem(visitKey , "true");
+    }
+</script>
 
 </body>
 </html>
